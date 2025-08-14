@@ -20,29 +20,13 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.item;
 
-import java.util.List;
+import net.minecraft.item.Item;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+public class DaisyCoinItem extends Item {
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
-
-public class DaisyClient implements ClientModInitializer {
-
-	@Override
-	public void onInitializeClient() {
-
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
-
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
+	public DaisyCoinItem(Settings settings) {
+		super(settings);
 	}
 }

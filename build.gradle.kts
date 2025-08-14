@@ -1,5 +1,5 @@
 plugins {
-	id("fabric-loom").version("1.9-SNAPSHOT")
+	id("fabric-loom").version("1.10-SNAPSHOT")
 	id("maven-publish")
 }
 
@@ -16,19 +16,28 @@ loom {
 
 			ideConfigGenerated(true)
 		}
-        configureEach {
-            if (name == "client") {
-                programArgs.add("--username=Ladybrine")
-                programArgs.add("--uuid=5d66606c-949c-47ce-ba4c-a1b9339ba3c8")
-            }
+        register("client2") {
+            client()
+            name = "client2"
+            programArgs.add("--username=macuguita")
+            programArgs.add("--uuid=0e56050b-ee27-478a-a345-d2b384919081")
         }
-    }
+		configureEach {
+			if (name == "client") {
+				programArgs.add("--username=Ladybrine")
+				programArgs.add("--uuid=5d66606c-949c-47ce-ba4c-a1b9339ba3c8")
+			}
+		}
+	}
+	//accessWidenerPath = file("src/main/resources/${BuildConfig.modId}.accesswidener")
 }
 
 sourceSets {
 	main {
 		resources.srcDir("src/main/generated")
 		resources.exclude(".cache")
+		//resources.exclude("daisySMP.aseprite")
+		//resources.exclude("assets/daisy/sounds/convert_to_ogg.sh")
 	}
 }
 
@@ -43,10 +52,6 @@ repositories {
 	maven {
 		name = "Modrinth"
 		url = uri("https://api.modrinth.com/maven")
-	}
-	maven {
-		name = "Forge"
-		url = uri("https://maven.minecraftforge.net/")
 	}
 	maven {
 		name = "TerraformersMC"
@@ -69,33 +74,33 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${BuildConfig.fabricVersion}")
 
-	modImplementation("com.terraformersmc:modmenu:${BuildConfig.modMenuVersion}")
-	modLocalRuntime("dev.emi:emi-fabric:${BuildConfig.emiVersion}")
-    modImplementation("maven.modrinth:macu-lib:${BuildConfig.macuLibVersion}-${BuildConfig.minecraftVersion}-fabric")
+	modImplementation("maven.modrinth:macu-lib:${BuildConfig.macuLibVersion}-${BuildConfig.minecraftVersion}-fabric")
 
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
+	modRuntimeOnly("dev.emi:emi-fabric:${BuildConfig.emiVersion}")
 
-	include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
-	include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
-	include("dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
+	modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
+	modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
+	modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
+
+	include("org.ladysnake.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
+	include("org.ladysnake.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
+	include("org.ladysnake.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
 }
 
 tasks.processResources {
-    filesMatching("fabric.mod.json") {
-        expand(
-            "version" to BuildConfig.modVersion,
-            "modId" to BuildConfig.modId,
-            "modName" to BuildConfig.modName,
-            "description" to BuildConfig.description,
-            "license" to BuildConfig.license,
-            "loaderVersion" to BuildConfig.loaderVersion,
-            "minecraftVersion" to BuildConfig.minecraftVersion,
-            "minecraftVersionRange" to BuildConfig.minecraftVersionRange,
-            "macuLibVersion" to BuildConfig.macuLibVersion
-        )
-    }
+	filesMatching("fabric.mod.json") {
+		expand(
+			"version" to BuildConfig.modVersion,
+			"modId" to BuildConfig.modId,
+			"modName" to BuildConfig.modName,
+			"description" to BuildConfig.description,
+			"license" to BuildConfig.license,
+			"loaderVersion" to BuildConfig.loaderVersion,
+			"minecraftVersion" to BuildConfig.minecraftVersion,
+			"minecraftVersionRange" to BuildConfig.minecraftVersionRange,
+			"macuLibVersion" to BuildConfig.macuLibVersion
+		)
+	}
 }
 
 tasks.withType<JavaCompile>().configureEach {

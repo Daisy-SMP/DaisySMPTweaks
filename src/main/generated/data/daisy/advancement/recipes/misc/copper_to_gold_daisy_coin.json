@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_copper_daisy_coin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "daisy:copper_daisy_coin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "daisy:copper_to_gold_daisy_coin"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_copper_daisy_coin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "daisy:copper_to_gold_daisy_coin"
+    ]
+  }
+}

@@ -20,29 +20,34 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.datagen;
 
-import java.util.List;
+import com.macuguita.daisy.reg.DaisyObjects;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Models;
 
-public class DaisyClient implements ClientModInitializer {
+public class DaisyModelProvider extends FabricModelProvider {
+
+	public DaisyModelProvider(FabricDataOutput output) {
+		super(output);
+	}
 
 	@Override
-	public void onInitializeClient() {
+	public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
 
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
+	}
 
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
+	@Override
+	public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+		itemModelGenerator.register(DaisyObjects.PRIZE_BAG.get(), Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.COPPER_DAISY_COIN.get(), Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.GOLD_DAISY_COIN.get(), Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.DIAMOND_DAISY_COIN.get(), Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.NETHERITE_DAISY_COIN.get(), Models.GENERATED);
 	}
 }

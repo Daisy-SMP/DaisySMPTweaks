@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_netherite_daisy_coin": {
+      "conditions": {
+        "items": [
+          {
+            "items": "daisy:netherite_daisy_coin"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "daisy:netherite_to_diamond_daisy_coin"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_netherite_daisy_coin"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "daisy:netherite_to_diamond_daisy_coin"
+    ]
+  }
+}

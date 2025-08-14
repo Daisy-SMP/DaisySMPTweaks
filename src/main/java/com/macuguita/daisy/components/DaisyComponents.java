@@ -39,8 +39,8 @@ public class DaisyComponents implements EntityComponentInitializer, ScoreboardCo
 	public static final ComponentKey<WarpsComponent> WARPS_COMPONENT =
 			ComponentRegistry.getOrCreate(DaisyTweaks.id("warps"), WarpsComponent.class);
 
-	//public static final ComponentKey<WelcomeComponent> WELCOME_COMPONENT =
-	//		ComponentRegistry.getOrCreate(DaisyTweaks.id("welcome"), WelcomeComponent.class);
+	public static final ComponentKey<NoMinigamesComponent> NO_MINIGAMES_COMPONENT =
+			ComponentRegistry.getOrCreate(DaisyTweaks.id("no_minigames"), NoMinigamesComponent.class);
 
 	@Override
 	public void registerEntityComponentFactories(EntityComponentFactoryRegistry entityComponentFactoryRegistry) {
@@ -56,6 +56,10 @@ public class DaisyComponents implements EntityComponentInitializer, ScoreboardCo
 		scoreboardComponentFactoryRegistry.registerScoreboardComponent(
 				DaisyComponents.WARPS_COMPONENT,
 				WarpsComponent::new
+		);
+		scoreboardComponentFactoryRegistry.registerScoreboardComponent(
+				DaisyComponents.NO_MINIGAMES_COMPONENT,
+				NoMinigamesComponent::new
 		);
 	}
 }

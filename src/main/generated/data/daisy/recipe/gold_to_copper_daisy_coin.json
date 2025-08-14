@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "daisy:gold_daisy_coin"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "daisy:copper_daisy_coin"
+  }
+}

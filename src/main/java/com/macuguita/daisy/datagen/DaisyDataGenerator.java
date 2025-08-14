@@ -29,6 +29,10 @@ public class DaisyDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+		var pack = fabricDataGenerator.createPack();
 
+		pack.addProvider(DaisyLanguajeProvider::new);
+		pack.addProvider(DaisyModelProvider::new);
+		pack.addProvider(DaisyRecipeProvider::new);
 	}
 }

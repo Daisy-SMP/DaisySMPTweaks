@@ -20,29 +20,20 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.chatminigame;
 
-import java.util.List;
+import java.util.Locale;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+import com.mojang.serialization.Codec;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
+public enum QuestionType {
+	UNSCRAMBLE_ITEM,
+	FILL_IN_THE_BLANKS,
+	REVERSE_ITEM,
+	DATA_DRIVEN;
 
-public class DaisyClient implements ClientModInitializer {
-
-	@Override
-	public void onInitializeClient() {
-
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
-
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
-	}
+	public static final Codec<QuestionType> CODEC = Codec.STRING.xmap(
+			s -> QuestionType.valueOf(s.toUpperCase(Locale.ROOT)),
+			qt -> qt.name().toLowerCase(Locale.ROOT)
+	);
 }

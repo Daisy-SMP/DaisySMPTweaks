@@ -20,29 +20,27 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.utils;
 
-import java.util.List;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+public class HomeLocation {
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
+	private final BlockPos position;
+	private final RegistryKey<World> dimension;
 
-public class DaisyClient implements ClientModInitializer {
+	public HomeLocation(BlockPos position, RegistryKey<World> dimension) {
+		this.position = position;
+		this.dimension = dimension;
+	}
 
-	@Override
-	public void onInitializeClient() {
+	public BlockPos getPosition() {
+		return position;
+	}
 
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
-
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
+	public RegistryKey<World> getDimension() {
+		return dimension;
 	}
 }

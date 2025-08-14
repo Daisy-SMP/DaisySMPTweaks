@@ -25,14 +25,11 @@ package com.macuguita.daisy.mixin.admin;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 import java.util.function.Consumer;
 
 import com.macuguita.daisy.DaisyTweaks;
-import com.macuguita.daisy.admin.CustomPlayerSaveHandler;
-import com.macuguita.daisy.teleports.HomeLocation;
+import com.macuguita.daisy.commands.admin.CustomPlayerSaveHandler;
 import com.mojang.datafixers.DataFixer;
 import com.mojang.serialization.DataResult;
 import org.spongepowered.asm.mixin.Final;
@@ -41,18 +38,11 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import net.minecraft.datafixer.DataFixTypes;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtElement;
 import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.NbtIo;
-import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtSizeTracker;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.PlayerSaveHandler;
-import net.minecraft.world.World;
 
 @Mixin(PlayerSaveHandler.class)
 public class PlayerSaveHandlerMixin implements CustomPlayerSaveHandler {
@@ -97,7 +87,7 @@ public class PlayerSaveHandlerMixin implements CustomPlayerSaveHandler {
 	}
 
 	@Override
-	public BlockPos daisy$getPos(UUID uuid) {
+	public NbtCompound daisy$getNbt(UUID uuid) {
 		NbtCompound tag;
 
 		try {
@@ -114,56 +104,6 @@ public class PlayerSaveHandlerMixin implements CustomPlayerSaveHandler {
 		}
 
 		int i = NbtHelper.getDataVersion(tag, -1);
-		tag = DataFixTypes.PLAYER.update(this.dataFixer, tag, i);
-
-		NbtList list = tag.getList("Pos", NbtElement.DOUBLE_TYPE);
-
-		double X = list.getDouble(0);
-		double Y = list.getDouble(1);
-		double Z = list.getDouble(2);
-
-		return new BlockPos((int) X, (int) Y, (int) Z);
-	}
-
-	@Override
-	public Map<String, HomeLocation> daisy$getHomes(UUID uuid) {
-		NbtCompound tag;
-
-		try {
-			File file = new File(this.playerDataDir, uuid.toString() + ".dat");
-			if (file.exists() && file.isFile()) {
-				tag = NbtIo.readCompressed(file.toPath(), NbtSizeTracker.ofUnlimitedBytes());
-			} else {
-				DaisyTweaks.LOGGER.error("Player data file for " + uuid + " does not exist");
-				return null;
-			}
-		} catch (Exception var4) {
-			DaisyTweaks.LOGGER.error("Failed to load player data for " + uuid);
-			return null;
-		}
-
-		int i = NbtHelper.getDataVersion(tag, -1);
-		tag = DataFixTypes.PLAYER.update(this.dataFixer, tag, i);
-		Map<String, HomeLocation> homeList = new HashMap<>();
-
-		NbtCompound componentsNbt = tag.getCompound("cardinal_components");
-		if (componentsNbt.contains("daisy:homes", NbtElement.COMPOUND_TYPE)) {
-			NbtCompound homes = componentsNbt.getCompound("daisy:homes");
-			NbtList homesNbtList = homes.getList("Homes", NbtElement.COMPOUND_TYPE);
-
-			for (int j = 0; j < homesNbtList.size(); j++) {
-				NbtCompound homeTag = homesNbtList.getCompound(j);
-				String name = homeTag.getString("Name");
-				int x = homeTag.getInt("X");
-				int y = homeTag.getInt("Y");
-				int z = homeTag.getInt("Z");
-				String dimensionId = homeTag.getString("Dimension");
-				RegistryKey<World> dimension = RegistryKey.of(RegistryKeys.WORLD, Identifier.of(dimensionId));
-				homeList.put(name, new HomeLocation(new BlockPos(x, y, z), dimension));
-			}
-		} else {
-			DaisyTweaks.LOGGER.error("Could not find component nbt for " + uuid);
-		}
-		return homeList;
+		return DataFixTypes.PLAYER.update(this.dataFixer, tag, i);
 	}
 }

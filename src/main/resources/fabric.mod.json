@@ -1,48 +1,48 @@
 {
-	"schemaVersion": 1,
-	"id": "${modId}",
-	"version": "${version}",
-	"name": "${modName}",
-	"description": "${description}",
-	"authors": [
-		"macuguita"
-	],
-	"contact": {
-		"homepage": "https://daisysmp.macuguita.com/",
-		"sources": "https://github.com/Daisy-SMP/DaisySMPTweaks"
-	},
-	"license": "${license}",
-	"icon": "assets/${modId}/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"com.macuguita.daisy.DaisyTweaks"
-		],
-		"client": [
-			"com.macuguita.daisy.client.DaisyClient"
-		],
-		"fabric-datagen": [
-			"com.macuguita.daisy.datagen.DaisyDataGenerator"
-		],
-		"cardinal-components": [
-			"com.macuguita.daisy.components.DaisyComponents"
-		]
-	},
-	"mixins": [
-		"${modId}.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=${loaderVersion}",
-		"minecraft": "${minecraftVersionRange}",
-		"java": ">=17",
-		"fabric-api": "*",
-		"macu_lib": ">=${macuLibVersion}-${minecraftVersion}"
-	},
-	"custom": {
-		"cardinal-components": [
-			"${modId}:homes",
-			"${modId}:warps",
-			"${modId}:welcome"
-		]
-	}
+  "schemaVersion": 1,
+  "id": "${modId}",
+  "version": "${version}",
+  "name": "${modName}",
+  "description": "${description}",
+  "authors": [
+    "macuguita"
+  ],
+  "contact": {
+    "homepage": "https://daisysmp.macuguita.com/",
+    "sources": "https://github.com/Daisy-SMP/DaisySMPTweaks"
+  },
+  "license": "${license}",
+  "icon": "assets/${modId}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.macuguita.daisy.DaisyTweaks"
+    ],
+    "client": [
+      "com.macuguita.daisy.client.DaisyClient"
+    ],
+    "fabric-datagen": [
+      "com.macuguita.daisy.datagen.DaisyDataGenerator"
+    ],
+    "cardinal-components": [
+      "com.macuguita.daisy.components.DaisyComponents"
+    ]
+  },
+  "mixins": [
+    "${modId}.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loaderVersion}",
+    "minecraft": "${minecraftVersionRange}",
+    "java": ">=17",
+    "fabric-api": "*",
+    "macu_lib": ">=${macuLibVersion}-${minecraftVersion}"
+  },
+  "custom": {
+    "cardinal-components": [
+      "${modId}:homes",
+      "${modId}:warps",
+      "${modId}:no_minigames"
+    ]
+  }
 }

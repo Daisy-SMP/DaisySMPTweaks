@@ -20,29 +20,30 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.client.payload;
 
 import java.util.List;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+import com.macuguita.daisy.DaisyTweaks;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
+import net.minecraft.network.codec.PacketCodecs;
+import net.minecraft.network.packet.CustomPayload;
 
-public class DaisyClient implements ClientModInitializer {
+public record AntiCheatPayloadS2C(List<String> susMods) implements CustomPayload {
+
+	public static final Id<AntiCheatPayloadS2C> ID = new Id<>(DaisyTweaks.ANTI_CHEAT_S2C_PAYLOAD);
+
+	public static final PacketCodec<RegistryByteBuf, AntiCheatPayloadS2C> CODEC = PacketCodec.tuple(
+			PacketCodecs.STRING.collect(PacketCodecs.toList()),
+			AntiCheatPayloadS2C::susMods,
+
+			AntiCheatPayloadS2C::new
+	);
 
 	@Override
-	public void onInitializeClient() {
-
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
-
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
+	public Id<? extends CustomPayload> getId() {
+		return ID;
 	}
 }

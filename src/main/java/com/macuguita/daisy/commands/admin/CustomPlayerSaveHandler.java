@@ -20,29 +20,18 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy.client;
+package com.macuguita.daisy.commands.admin;
 
-import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-import com.macuguita.daisy.client.payload.AntiCheatPayloadC2S;
-import com.macuguita.daisy.client.payload.AntiCheatPayloadS2C;
+import com.mojang.serialization.DataResult;
 
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.nbt.NbtCompound;
 
-public class DaisyClient implements ClientModInitializer {
+public interface CustomPlayerSaveHandler {
 
-	@Override
-	public void onInitializeClient() {
+	DataResult<NbtCompound> daisy$edit(UUID uuid, Consumer<NbtCompound> editor);
 
-		ClientPlayNetworking.registerGlobalReceiver(AntiCheatPayloadS2C.ID, ((antiCheatPayloadC2S, context) -> {
-			List<String> susMods = antiCheatPayloadC2S.susMods();
-			List<String> detected = susMods.stream()
-					.filter(id -> FabricLoader.getInstance().isModLoaded(id))
-					.toList();
-
-			ClientPlayNetworking.send(new AntiCheatPayloadC2S(detected));
-		}));
-	}
+	NbtCompound daisy$getNbt(UUID uuid);
 }

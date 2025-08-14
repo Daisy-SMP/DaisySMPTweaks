@@ -25,7 +25,7 @@ package com.macuguita.daisy.components;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.macuguita.daisy.teleports.HomeLocation;
+import com.macuguita.daisy.utils.HomeLocation;
 import org.jetbrains.annotations.Nullable;
 import org.ladysnake.cca.api.v3.component.Component;
 

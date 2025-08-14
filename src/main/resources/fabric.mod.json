@@ -35,8 +35,7 @@
     "fabricloader": ">=${loaderVersion}",
     "minecraft": "${minecraftVersionRange}",
     "java": ">=17",
-    "fabric-api": "*",
-    "macu_lib": ">=${macuLibVersion}-${minecraftVersion}"
+    "fabric-api": "*"
   },
   "custom": {
     "cardinal-components": [

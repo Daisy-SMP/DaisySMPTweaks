@@ -41,8 +41,8 @@ public class DaisyRecipeProvider extends FabricRecipeProvider {
 
 	@Override
 	public void generate(RecipeExporter recipeExporter) {
-		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.COPPER_DAISY_COIN.get(), RecipeCategory.MISC, DaisyObjects.GOLD_DAISY_COIN.get(), "copper_to_gold_daisy_coin", null, "gold_to_copper_daisy_coin", null);
-		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.GOLD_DAISY_COIN.get(), RecipeCategory.MISC, DaisyObjects.DIAMOND_DAISY_COIN.get(), "gold_to_diamond_daisy_coin", null, "diamond_to_gold_daisy_coin", null);
-		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.DIAMOND_DAISY_COIN.get(), RecipeCategory.MISC, DaisyObjects.NETHERITE_DAISY_COIN.get(), "diamond_to_netherite_daisy_coin", null, "netherite_to_diamond_daisy_coin", null);
+		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.COPPER_DAISY_COIN, RecipeCategory.MISC, DaisyObjects.GOLD_DAISY_COIN, "copper_to_gold_daisy_coin", null, "gold_to_copper_daisy_coin", null);
+		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.GOLD_DAISY_COIN, RecipeCategory.MISC, DaisyObjects.DIAMOND_DAISY_COIN, "gold_to_diamond_daisy_coin", null, "diamond_to_gold_daisy_coin", null);
+		offerReversibleCompactingRecipes(recipeExporter, RecipeCategory.MISC, DaisyObjects.DIAMOND_DAISY_COIN, RecipeCategory.MISC, DaisyObjects.NETHERITE_DAISY_COIN, "diamond_to_netherite_daisy_coin", null, "netherite_to_diamond_daisy_coin", null);
 	}
 }

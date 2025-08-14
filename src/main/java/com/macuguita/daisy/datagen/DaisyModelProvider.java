@@ -44,10 +44,10 @@ public class DaisyModelProvider extends FabricModelProvider {
 
 	@Override
 	public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-		itemModelGenerator.register(DaisyObjects.PRIZE_BAG.get(), Models.GENERATED);
-		itemModelGenerator.register(DaisyObjects.COPPER_DAISY_COIN.get(), Models.GENERATED);
-		itemModelGenerator.register(DaisyObjects.GOLD_DAISY_COIN.get(), Models.GENERATED);
-		itemModelGenerator.register(DaisyObjects.DIAMOND_DAISY_COIN.get(), Models.GENERATED);
-		itemModelGenerator.register(DaisyObjects.NETHERITE_DAISY_COIN.get(), Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.PRIZE_BAG, Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.COPPER_DAISY_COIN, Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.GOLD_DAISY_COIN, Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.DIAMOND_DAISY_COIN, Models.GENERATED);
+		itemModelGenerator.register(DaisyObjects.NETHERITE_DAISY_COIN, Models.GENERATED);
 	}
 }

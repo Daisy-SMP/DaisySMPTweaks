@@ -43,11 +43,11 @@ public class DaisyLanguajeProvider extends FabricLanguageProvider {
 
 	@Override
 	public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
-		generateItemTranslations(DaisyObjects.PRIZE_BAG.get(), translationBuilder);
-		generateItemTranslations(DaisyObjects.COPPER_DAISY_COIN.get(), translationBuilder);
-		generateItemTranslations(DaisyObjects.GOLD_DAISY_COIN.get(), translationBuilder);
-		generateItemTranslations(DaisyObjects.DIAMOND_DAISY_COIN.get(), translationBuilder);
-		generateItemTranslations(DaisyObjects.NETHERITE_DAISY_COIN.get(), translationBuilder);
+		generateItemTranslations(DaisyObjects.PRIZE_BAG, translationBuilder);
+		generateItemTranslations(DaisyObjects.COPPER_DAISY_COIN, translationBuilder);
+		generateItemTranslations(DaisyObjects.GOLD_DAISY_COIN, translationBuilder);
+		generateItemTranslations(DaisyObjects.DIAMOND_DAISY_COIN, translationBuilder);
+		generateItemTranslations(DaisyObjects.NETHERITE_DAISY_COIN, translationBuilder);
 	}
 
 	private String capitalizeString(String string) {

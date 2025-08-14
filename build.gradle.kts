@@ -74,8 +74,6 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${BuildConfig.fabricVersion}")
 
-	modImplementation("maven.modrinth:macu-lib:${BuildConfig.macuLibVersion}-${BuildConfig.minecraftVersion}-fabric")
-
 	modRuntimeOnly("dev.emi:emi-fabric:${BuildConfig.emiVersion}")
 
 	modImplementation("org.ladysnake.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
@@ -97,8 +95,7 @@ tasks.processResources {
 			"license" to BuildConfig.license,
 			"loaderVersion" to BuildConfig.loaderVersion,
 			"minecraftVersion" to BuildConfig.minecraftVersion,
-			"minecraftVersionRange" to BuildConfig.minecraftVersionRange,
-			"macuLibVersion" to BuildConfig.macuLibVersion
+			"minecraftVersionRange" to BuildConfig.minecraftVersionRange
 		)
 	}
 }

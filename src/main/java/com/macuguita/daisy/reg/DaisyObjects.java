@@ -26,26 +26,25 @@ import com.macuguita.daisy.DaisyTweaks;
 import com.macuguita.daisy.item.DaisyCoinItem;
 import com.macuguita.daisy.item.PrizeBagItem;
 
-import com.macuguita.lib.platform.registry.GuitaRegistries;
-import com.macuguita.lib.platform.registry.GuitaRegistry;
-import com.macuguita.lib.platform.registry.GuitaRegistryEntry;
-
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Rarity;
 
 public class DaisyObjects {
 
-	public static final GuitaRegistry<Item> ITEMS = GuitaRegistries.create(Registries.ITEM, DaisyTweaks.MOD_ID);
+	public static final Item PRIZE_BAG = register("prize_bag", new PrizeBagItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE), DaisyTweaks.id("prize/prize")));
 
-	public static final GuitaRegistryEntry<Item> PRIZE_BAG = ITEMS.register("prize_bag", () -> new PrizeBagItem(new Item.Settings().maxCount(1).rarity(Rarity.RARE), DaisyTweaks.id("prize/prize")));
+	public static final Item COPPER_DAISY_COIN = register("copper_daisy_coin", new DaisyCoinItem(new Item.Settings().rarity(Rarity.COMMON)));
+	public static final Item GOLD_DAISY_COIN = register("gold_daisy_coin", new DaisyCoinItem(new Item.Settings().rarity(Rarity.UNCOMMON)));
+	public static final Item DIAMOND_DAISY_COIN = register("diamond_daisy_coin", new DaisyCoinItem(new Item.Settings().rarity(Rarity.RARE)));
+	public static final Item NETHERITE_DAISY_COIN = register("netherite_daisy_coin", new DaisyCoinItem(new Item.Settings().rarity(Rarity.EPIC)));
 
-	public static final GuitaRegistryEntry<Item> COPPER_DAISY_COIN = ITEMS.register("copper_daisy_coin", () -> new DaisyCoinItem(new Item.Settings().rarity(Rarity.COMMON)));
-	public static final GuitaRegistryEntry<Item> GOLD_DAISY_COIN = ITEMS.register("gold_daisy_coin", () -> new DaisyCoinItem(new Item.Settings().rarity(Rarity.UNCOMMON)));
-	public static final GuitaRegistryEntry<Item> DIAMOND_DAISY_COIN = ITEMS.register("diamond_daisy_coin", () -> new DaisyCoinItem(new Item.Settings().rarity(Rarity.RARE)));
-	public static final GuitaRegistryEntry<Item> NETHERITE_DAISY_COIN = ITEMS.register("netherite_daisy_coin", () -> new DaisyCoinItem(new Item.Settings().rarity(Rarity.EPIC)));
+	private static Item register(String name, Item item) {
+		return Registry.register(Registries.ITEM, DaisyTweaks.id(name), item);
+	}
 
 	public static void init() {
-		ITEMS.init();
+
 	}
 }

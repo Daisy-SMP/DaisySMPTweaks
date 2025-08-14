@@ -36,11 +36,10 @@
 		"minecraft": "${minecraftVersionRange}",
 		"java": ">=17",
 		"fabric-api": "*",
-		"macu_lib": "${macuLibVersion}-${minecraftVersion}-fabric"
+		"macu_lib": ">=${macuLibVersion}-${minecraftVersion}"
 	},
 	"custom": {
 		"cardinal-components": [
-			"${modId}:nether_lantern",
 			"${modId}:homes",
 			"${modId}:warps",
 			"${modId}:welcome"

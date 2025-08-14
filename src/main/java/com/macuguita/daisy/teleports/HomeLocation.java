@@ -20,33 +20,27 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy;
+package com.macuguita.daisy.teleports;
 
-import com.macuguita.daisy.admin.AdminCommands;
-import com.macuguita.daisy.teleports.HomeCommands;
-import com.macuguita.daisy.teleports.TpaCommands;
-import com.macuguita.daisy.teleports.WarpCommands;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
-import net.minecraft.util.Identifier;
+public class HomeLocation {
 
-import net.fabricmc.api.ModInitializer;
+	private final BlockPos position;
+	private final RegistryKey<World> dimension;
 
-public class DaisyTweaks implements ModInitializer {
-	public static final String MOD_ID = "daisy";
-
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	@Override
-	public void onInitialize() {
-		AdminCommands.init();
-		HomeCommands.init();
-		TpaCommands.init();
-		WarpCommands.init();
+	public HomeLocation(BlockPos position, RegistryKey<World> dimension) {
+		this.position = position;
+		this.dimension = dimension;
 	}
 
-	public static Identifier id(String name) {
-		return Identifier.of(MOD_ID, name);
+	public BlockPos getPosition() {
+		return position;
+	}
+
+	public RegistryKey<World> getDimension() {
+		return dimension;
 	}
 }

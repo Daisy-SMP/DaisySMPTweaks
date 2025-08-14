@@ -2,7 +2,7 @@ object BuildConfig {
     val minecraftVersion: String = "1.21.1"
     val minecraftVersionRange: String = "1.21.1"
     val yarnMappings: String = minecraftVersion + "+build.3"
-    val loaderVersion: String = "0.17.2"
+    val loaderVersion: String = "0.16.14"
 
     val modVersion: String = minecraftVersion + "-1.0.0"
     val mavenGroup: String = "com.macuguita.daisy"

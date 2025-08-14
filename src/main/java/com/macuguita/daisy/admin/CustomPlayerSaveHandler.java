@@ -20,33 +20,23 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy;
+package com.macuguita.daisy.admin;
 
-import com.macuguita.daisy.admin.AdminCommands;
-import com.macuguita.daisy.teleports.HomeCommands;
-import com.macuguita.daisy.teleports.TpaCommands;
-import com.macuguita.daisy.teleports.WarpCommands;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Map;
+import java.util.UUID;
+import java.util.function.Consumer;
 
-import net.minecraft.util.Identifier;
+import com.macuguita.daisy.teleports.HomeLocation;
+import com.mojang.serialization.DataResult;
 
-import net.fabricmc.api.ModInitializer;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.math.BlockPos;
 
-public class DaisyTweaks implements ModInitializer {
-	public static final String MOD_ID = "daisy";
+public interface CustomPlayerSaveHandler {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	DataResult<NbtCompound> daisy$edit(UUID uuid, Consumer<NbtCompound> editor);
 
-	@Override
-	public void onInitialize() {
-		AdminCommands.init();
-		HomeCommands.init();
-		TpaCommands.init();
-		WarpCommands.init();
-	}
+	BlockPos daisy$getPos(UUID uuid);
 
-	public static Identifier id(String name) {
-		return Identifier.of(MOD_ID, name);
-	}
+	Map<String, HomeLocation> daisy$getHomes(UUID uuid);
 }

@@ -74,12 +74,10 @@ dependencies {
     modImplementation("maven.modrinth:macu-lib:${BuildConfig.macuLibVersion}-${BuildConfig.minecraftVersion}-fabric")
 
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
-	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-block:${BuildConfig.ccaVersion}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
 	modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
 
 	include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${BuildConfig.ccaVersion}")
-	include("dev.onyxstudios.cardinal-components-api:cardinal-components-block:${BuildConfig.ccaVersion}")
 	include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${BuildConfig.ccaVersion}")
 	include("dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${BuildConfig.ccaVersion}")
 }

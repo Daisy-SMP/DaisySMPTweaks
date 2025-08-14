@@ -20,33 +20,17 @@
  * SOFTWARE.
  */
 
-package com.macuguita.daisy;
+package com.macuguita.daisy.mixin.admin;
 
-import com.macuguita.daisy.admin.AdminCommands;
-import com.macuguita.daisy.teleports.HomeCommands;
-import com.macuguita.daisy.teleports.TpaCommands;
-import com.macuguita.daisy.teleports.WarpCommands;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.gen.Accessor;
 
-import net.minecraft.util.Identifier;
+import net.minecraft.server.PlayerManager;
+import net.minecraft.world.PlayerSaveHandler;
 
-import net.fabricmc.api.ModInitializer;
+@Mixin(PlayerManager.class)
+public interface PlayerManagerAccessor {
 
-public class DaisyTweaks implements ModInitializer {
-	public static final String MOD_ID = "daisy";
-
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
-	@Override
-	public void onInitialize() {
-		AdminCommands.init();
-		HomeCommands.init();
-		TpaCommands.init();
-		WarpCommands.init();
-	}
-
-	public static Identifier id(String name) {
-		return Identifier.of(MOD_ID, name);
-	}
+	@Accessor("saveHandler")
+	PlayerSaveHandler daisy$getSaveHandler();
 }

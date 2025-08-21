@@ -5,67 +5,9 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "daisy:copper_daisy_coin",
-          "weight": 80,
-          "quality": 0,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:binomial",
-                "n": 8,
-                "p": 0.7
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "daisy:gold_daisy_coin",
-          "weight": 14,
-          "quality": 0,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:binomial",
-                "n": 2,
-                "p": 0.6
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "daisy:diamond_daisy_coin",
-          "weight": 5,
-          "quality": 0,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:binomial",
-                "n": 3,
-                "p": 0.1
-              }
-            }
-          ]
-        },
-        {
-          "type": "minecraft:item",
-          "name": "daisy:netherite_daisy_coin",
+          "name": "minecraft:stick",
           "weight": 1,
-          "quality": 0,
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "type": "minecraft:binomial",
-                "n": 2,
-                "p": 0.1
-              }
-            }
-          ]
+          "quality": 0
         }
       ]
     }

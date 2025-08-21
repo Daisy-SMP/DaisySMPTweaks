@@ -39,7 +39,7 @@ public class DatapackQuestionLoader implements SimpleSynchronousResourceReloadLi
 
 	public static final List<ChatMinigame.Question> DATA_QUESTIONS = new ArrayList<>();
 	private static final Identifier ID = DaisyTweaks.id("datapack_question_loader");
-	private static final Identifier QUESTIONS_DIR = DaisyTweaks.id("chat_minigame_questions");
+	private static final Identifier QUESTIONS_DIR = DaisyTweaks.id("chat_minigame_question");
 
 	@Override
 	public Identifier getFabricId() {

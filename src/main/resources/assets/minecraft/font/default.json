@@ -1,0 +1,173 @@
+{
+  "providers": [
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/owner_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ీ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/coowner_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ே"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/admin_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ఀ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/moderator_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ஸ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/owner_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ꐘ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/coowner_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ఋ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/admin_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ఆ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/moderator_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ꐾ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/daisy_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ₗ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/orchid_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "⚺"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/lily_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "⟥"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/poppy_tag.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "╩"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/daisy_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "⻣"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/orchid_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "ⳑ"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/lily_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "⫐"
+      ]
+    },
+    {
+      "type": "bitmap",
+      "file": "daisy:tags/poppy_text.png",
+      "height": 7,
+      "ascent": 7,
+      "chars": [
+        "⥬"
+      ]
+    },
+    {
+      "type": "space",
+      "advances": {
+        "": -1,
+        "": -2,
+        "": -4,
+        "": -8,
+        "": -16,
+        "": -32,
+        "": -64,
+        "": -128,
+        "": -256,
+        "": -512,
+        "": 1,
+        "": 2,
+        "": 4,
+        "": 8,
+        "": 16,
+        "": 32,
+        "": 64,
+        "": 128,
+        "": 256,
+        "": 512
+      }
+    }
+  ]
+}

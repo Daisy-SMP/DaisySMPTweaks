@@ -1,2 +1,0 @@
-classTweaker v1 named
-inject-interface net/minecraft/world/level/storage/PlayerDataStorage com/macuguita/petal_smp/injected_interfaces/CustomPlayerDataStorage

@@ -45,6 +45,7 @@ repositories {
         Triple("Modrinth", "https://api.modrinth.com/maven", listOf("maven.modrinth")),
         Triple("ParchmentMC", "https://maven.parchmentmc.org", listOf("org.parchmentmc.data")),
         Triple("Architectury", "https://maven.architectury.dev/", listOf("dev.architectury")),
+        Triple("Forge", "https://maven.minecraftforge.net/", listOf("com.github.glitchfiend")),
     )
 
     exclusiveRepos.forEach { (name, url, groups) ->
@@ -84,27 +85,6 @@ dependencies {
     modImplementation("com.cobblemon:fabric:1.7.1+1.21.1"){
         exclude("net.fabricmc.fabric-api")
     }
-
-    modImplementation("maven.modrinth:only-bottle-caps:1.3.0"){
-        exclude("net.fabricmc.fabric-api")
-    }
-    include("maven.modrinth:only-bottle-caps:1.3.0")
-
-    modImplementation("maven.modrinth:simpletms-tms-and-trs-for-cobblemon:uWiIETYV"){
-        exclude("net.fabricmc.fabric-api")
-    }
-    include("maven.modrinth:simpletms-tms-and-trs-for-cobblemon:uWiIETYV")
-
-    modImplementation("com.terraformersmc:modmenu:${BuildConfig.modMenuVersion}"){
-        exclude("net.fabricmc.fabric-api")
-    }
-
-    modRuntimeOnly("dev.architectury:architectury-fabric:13.0.8"){
-        exclude("net.fabricmc.fabric-api")
-    }
-    modRuntimeOnly("maven.modrinth:supermartijn642s-config-lib:1.1.8-fabric-mc1.21"){
-        exclude("net.fabricmc.fabric-api")
-    }
 }
 
 tasks.register<net.fabricmc.loom.task.FabricModJsonV1Task>("genModJson") {
@@ -135,9 +115,9 @@ tasks.register<net.fabricmc.loom.task.FabricModJsonV1Task>("genModJson") {
         }
         environment = "*"
 
-        entrypoint("main", "com.macuguita.petal_smp.common.PetalSMPTweaks", "kotlin")
-        entrypoint("client", "com.macuguita.petal_smp.client.ClientEntrypoint", "kotlin")
-        entrypoint("server", "com.macuguita.petal_smp.server.ServerEntrypoint", "kotlin")
+        entrypoint("main", "com.macuguita.daisy_smp.common.DaisySMPTweaks", "kotlin")
+        entrypoint("client", "com.macuguita.daisy_smp.client.ClientEntrypoint", "kotlin")
+        entrypoint("server", "com.macuguita.daisy_smp.server.ServerEntrypoint", "kotlin")
 
         depends("fabricloader", ">=${BuildConfig.loaderVersion}")
         depends("minecraft", BuildConfig.minecraftVersionRange)
@@ -146,8 +126,6 @@ tasks.register<net.fabricmc.loom.task.FabricModJsonV1Task>("genModJson") {
         depends("macu_lib", ">=${BuildConfig.maculibVersion}")
         depends("cobblemon", "*")
         depends("fabric-language-kotlin", "*")
-        depends("supermartijn642configlib", ">=1.1.8")
-        depends("architectury", "13.x")
     }
 }
 

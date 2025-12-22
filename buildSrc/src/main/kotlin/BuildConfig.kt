@@ -5,11 +5,11 @@ object BuildConfig {
     val parchmentMappings: String = "2024.11.17"
     val loaderVersion: String = "0.18.2"
 
-    val modVersion: String = "$minecraftVersion-0.0.14"
-    val mavenGroup: String = "com.macuguita.petal_smp"
-    val modId: String = "petal_tweaks"
-    val modName: String = "Petal SMP Tweaks"
-    val description: String = "petal smp tweaks"
+    val modVersion: String = "$minecraftVersion-0.0.1"
+    val mavenGroup: String = "com.macuguita.daisy_smp"
+    val modId: String = "daisy_tweaks"
+    val modName: String = "Daisy SMP Tweaks"
+    val description: String = "Daisy smp tweaks"
     val license: String = "MIT"
 
     val fabricVersion: String = "0.116.7+$minecraftVersion"

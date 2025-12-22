@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "petal_tweaks",
+  "id": "daisy_tweaks",
   "version": "1.21.1-0.0.14",
   "environment": "*",
   "entrypoints": {
     "server": [
       {
-        "value": "com.macuguita.petal_smp.server.ServerEntrypoint",
+        "value": "com.macuguita.daisy_smp.server.ServerEntrypoint",
         "adapter": "kotlin"
       }
     ],
     "client": [
       {
-        "value": "com.macuguita.petal_smp.client.ClientEntrypoint",
+        "value": "com.macuguita.daisy_smp.client.ClientEntrypoint",
         "adapter": "kotlin"
       }
     ],
     "main": [
       {
-        "value": "com.macuguita.petal_smp.common.PetalSMPTweaks",
+        "value": "com.macuguita.daisy_smp.common.DaisySMPTweaks",
         "adapter": "kotlin"
       }
     ]
   },
   "mixins": [
-    "petal_tweaks.mixins.json"
+    "daisy_tweaks.mixins.json"
   ],
-  "accessWidener": "petal_tweaks.classtweaker",
+  "accessWidener": "daisy_tweaks.classtweaker",
   "depends": {
     "fabricloader": "\u003e\u003d0.18.2",
     "minecraft": "\u003e\u003d1.21.1",
@@ -36,8 +36,8 @@
     "cobblemon": "*",
     "fabric-language-kotlin": "*"
   },
-  "name": "Petal SMP Tweaks",
-  "description": "petal smp tweaks",
+  "name": "Daisy SMP Tweaks",
+  "description": "Daisy smp tweaks",
   "authors": [
     {
       "name": "macuguita",
@@ -50,5 +50,5 @@
     "homepage": "https://macuguita.com"
   },
   "license": "MIT",
-  "icon": "assets/petal_tweaks/icon.png"
+  "icon": "assets/daisy_tweaks/icon.png"
 }
